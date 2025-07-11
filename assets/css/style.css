@@ -1,0 +1,1442 @@
+body {
+  /* margin-top: 110px; Dihapus atau dipindahkan ke main.container jika sebelumnya ada di sini */
+  /* padding-top: 110px; */ /* Pertahankan padding-top jika masih diperlukan untuk header */
+  padding-bottom: 80px; /* Nilai perkiraan tinggi mobile footer. SESUAIKAN INI! */
+  /* Pastikan nilai ini lebih besar atau sama dengan tinggi .mobile-footer-nav */
+}
+
+/* Footer Mobile */
+.mobile-footer-nav {
+  background-color: #1a1a1a;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #333;
+  /* Tambahkan ini agar footer tetap di bawah */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* File: assets/css/style.css (REVISI TOTAL FINAL & STABIL) */
+/* ======================================================= */
+/* == 1. GAYA DASAR & TEMA GELAP == */
+/* ======================================================= */
+body.dark-theme {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* Pastikan header ini fixed/sticky dan di atas konten lain */
+.main-header {
+  background-color: #1a1a1a;
+  padding: 10px 0;
+  border-bottom: 2px solid #ffc107;
+  position: sticky; /* Pastikan ini ada agar header tetap */
+  top: 0;
+  width: 100%;
+  z-index: 1020; /* Pastikan di atas konten */
+}
+
+/* Header untuk user yang login, juga harus sticky/fixed */
+.user-main-header {
+  background-color: #1a1a1a; /* Atur warna latar belakang */
+  position: sticky; /* Pastikan ini ada agar header tetap */
+  top: 0;
+  width: 100%;
+  z-index: 1020; /* Pastikan di atas konten */
+  /* Tinggi header user mungkin lebih besar karena ada two rows */
+  /* JANGAN HAPUS properti yang sudah ada di sini, hanya tambahkan atau sesuaikan jika perlu */
+}
+
+/* === SOLUSI TUMPANG TINDIH: Tambahkan margin-top pada elemen <main> === */
+/* Ini akan memastikan konten utama dimulai di bawah header */
+/* Sesuaikan nilai margin-top ini agar sesuai dengan TINGGI TOTAL header Anda.
+   Tinggi total .main-header sekitar 60px.
+   Tinggi total .user-main-header (dua baris) bisa sekitar 100-110px.
+   Gunakan nilai yang PALING TINGGI dari kedua header Anda.
+   Saya akan pakai 110px sebagai perkiraan aman. Silakan sesuaikan jika perlu.
+*/
+main.container {
+  margin-top: 110px; /* Kompensasi tinggi header. Sesuaikan nilai ini! */
+  /* Anda bisa juga menambahkan margin-bottom jika footer mobile menutupi konten */
+}
+/* --- Dropdown untuk Desktop --- */
+.main-nav {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.nav-item-dropdown {
+  position: relative;
+}
+.nav-item-dropdown .dropdown-toggle,
+.main-nav > a {
+  display: block;
+  padding: 8px 15px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+}
+.nav-item-dropdown:hover .dropdown-menu-custom,
+.main-nav > a:hover {
+  background-color: #2f2f2f;
+}
+.nav-item-dropdown:hover .dropdown-menu-custom {
+  display: block;
+}
+.dropdown-menu-custom {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 5px;
+  min-width: 200px;
+  z-index: 1000;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  padding: 5px 0;
+}
+.dropdown-menu-custom .dropdown-item {
+  display: block;
+  padding: 10px 15px;
+  color: #e0e0e0;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.dropdown-menu-custom .dropdown-item:hover {
+  background-color: #ffc107;
+  color: #121212;
+}
+
+/* --- Menu untuk Mobile (Off-canvas) --- */
+.mobile-nav a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: white;
+  border-bottom: 1px solid #333;
+}
+.mobile-nav-item-dropdown .mobile-dropdown-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: white;
+  border-bottom: 1px solid #333;
+}
+.mobile-nav-item-dropdown .mobile-dropdown-toggle i {
+  transition: transform 0.3s ease;
+}
+.mobile-nav-item-dropdown .mobile-dropdown-toggle.active i {
+  transform: rotate(180deg);
+}
+.mobile-dropdown-menu {
+  display: none;
+  padding-left: 20px;
+  background-color: #2a2a2a;
+}
+.mobile-dropdown-menu .mobile-dropdown-item {
+  display: block;
+  padding: 8px 15px;
+  color: #ccc;
+  text-decoration: none;
+  border-bottom: 1px solid #333;
+  font-size: 0.9rem;
+}
+
+/* ======================================================= */
+/* == 3. KOMPONEN HALAMAN UTAMA == */
+/* ======================================================= */
+
+/* Togel Card */
+.togel-card {
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  border-radius: 8px;
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #333;
+}
+.togel-market {
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #ffc107;
+  text-transform: uppercase;
+}
+.togel-date {
+  font-size: 0.6rem;
+  color: #aaa;
+}
+.togel-number {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 5px;
+}
+.togel-number span {
+  background-color: #fff;
+  color: #000;
+  font-weight: bold;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+}
+@media (max-width: 360px) {
+  .togel-number span {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 0.7rem;
+  }
+}
+
+/* --- Layout Kontainer Game (Responsif) --- */
+.game-content-desktop {
+  display: none; /* Sembunyikan di mobile secara default */
+}
+.main-game-content-mobile {
+  display: block; /* Tampilkan di mobile secara default */
+}
+
+@media (min-width: 992px) {
+  .game-content-desktop {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 15px;
+    margin-top: 2rem;
+  }
+  .main-game-content-mobile {
+    display: none; /* Sembunyikan layout mobile di desktop */
+  }
+}
+
+/* --- Kontainer & Kolom (Berlaku untuk Desktop & Mobile) --- */
+.game-menu-container {
+  background-color: #1f1f1f;
+  border-radius: 10px;
+  border: 1px solid #333;
+  height: 500px;
+  overflow: hidden;
+}
+.game-menu-container .row,
+.game-menu-container .col-5,
+.game-menu-container .col-7 {
+  height: 100%;
+}
+.menu-column {
+  height: 100%;
+  overflow-y: auto;
+  padding: 5px;
+}
+.category-column {
+  background-color: #1a1a1a;
+}
+.provider-logo-column {
+  border-left: 1px solid #333;
+}
+.menu-column::-webkit-scrollbar {
+  width: 5px;
+}
+.menu-column::-webkit-scrollbar-track {
+  background: #2a2a2a;
+}
+.menu-column::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 5px;
+}
+
+/* Item Kategori (Berlaku untuk Desktop & Mobile) */
+.menu-item-img {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  border: 2px solid transparent;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.menu-item-img img,
+.menu-item-img i {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  color: #ffc107;
+  flex-shrink: 0;
+}
+.menu-item-img span,
+.menu-item-img .category-label {
+  font-weight: 600;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+.menu-item-img:hover {
+  background-color: #2f2f2f;
+}
+.menu-item-img.active {
+  background: linear-gradient(
+    305deg,
+    rgba(41, 112, 115, 1) 16%,
+    rgba(83, 145, 104, 1) 30%,
+    rgba(126, 191, 132, 1) 49%,
+    rgba(171, 117, 0, 1) 83%
+  );
+  border: 1px solid #ffc107;
+}
+.menu-item-img.active span,
+.menu-item-img.active .category-label,
+.menu-item-img.active i {
+  color: #121212;
+  text-shadow: none;
+}
+@media (max-width: 991.98px) {
+  .menu-item-img {
+    flex-direction: column;
+    gap: 5px;
+    min-height: 80px;
+    justify-content: center;
+  }
+}
+
+/* Item Provider */
+.provider-grid-desktop-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
+}
+.provider-logo-item {
+  background: linear-gradient(
+    305deg,
+    rgba(41, 113, 115, 0.767) 16%,
+    rgba(83, 145, 104, 0.74) 30%,
+    rgba(126, 191, 133, 0.685) 49%,
+    rgba(171, 117, 0, 0.719) 83%
+  );
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid #ffc107;
+  box-shadow: 0 2px 5px rgba(207, 170, 6, 0.692);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.provider-logo-item:hover {
+  transform: scale(1.05);
+  border-color: #fff;
+}
+.provider-logo-item img {
+  width: 100%;
+  height: 70px;
+  object-fit: contain;
+}
+.provider-logo-item .fallback-text {
+  color: #121212;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 25px 5px;
+  display: block;
+  text-align: center;
+}
+
+/* ======================================================= */
+/* == 4. FORM, FOOTER, & KOMPONEN LAIN == */
+/* ======================================================= */
+
+/* Footer Mobile */
+.mobile-footer-nav {
+  background-color: #1a1a1a;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #333;
+}
+.mobile-footer-nav .nav-item {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.7rem;
+  flex-grow: 1;
+  padding: 5px 0;
+}
+.mobile-footer-nav .nav-item i {
+  font-size: 1.2rem;
+}
+.mobile-footer-nav .nav-item.active {
+  color: #ffc107;
+}
+.mobile-footer-nav .register-btn {
+  color: #121212;
+  background-color: #ffc107;
+  padding: 10px 5px;
+  border-radius: 8px;
+  transform: translateY(-15px);
+  box-shadow: 0 -2px 10px rgba(255, 193, 7, 0.3);
+}
+.mobile-footer-nav .register-btn.active {
+  color: #121212 !important;
+  border: 2px solid #fff;
+}
+
+/* Notifikasi Toast */
+.toast-notification {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(150%);
+  background-color: #ffc107;
+  color: #121212;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  transition: transform 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.toast-notification.show {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Halaman Promo */
+.page-header .page-title {
+  color: #ffc107;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.promo-card {
+  background-color: #1f1f1f;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.promo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+.promo-card-image {
+  width: 100%;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* Box cukup tinggi, responsif */
+  min-height: 180px;
+  height: 45vw;
+  max-height: 70vw;
+  aspect-ratio: 4/3;
+}
+.promo-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Selalu utuh, tidak pernah terpotong */
+  display: block;
+  margin: 0 auto;
+  background: #111; /* Biar tidak ada garis putih jika gambar kecil */
+}
+@media (max-width: 600px) {
+  .promo-card-image {
+    min-height: 140px;
+    height: 52vw;
+    aspect-ratio: 4/3;
+  }
+}
+.promo-card-body {
+  padding: 20px;
+  flex-grow: 1;
+}
+.promo-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffc107;
+  margin-bottom: 15px;
+}
+.promo-card-description {
+  font-size: 0.9rem;
+  color: #c0c0c0;
+  line-height: 1.6;
+}
+.promo-card-footer {
+  padding: 20px;
+  border-top: 1px solid #333;
+  background-color: #2a2a2a;
+}
+
+/* Halaman Daftar Pengguna */
+.form-section-title {
+  color: #ffc107;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #444;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+.card.bg-dark .form-control,
+.card.bg-dark .form-select {
+  background-color: #2a2a2a;
+  border-color: #444;
+  color: #fff;
+}
+.card.bg-dark .form-control:focus,
+.card.bg-dark .form-select:focus {
+  background-color: #2a2a2a;
+  border-color: #ffc107;
+  color: #fff;
+  box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+}
+.captcha-box {
+  background-color: #fff;
+  color: #000;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 5px;
+  border-radius: 5px;
+  user-select: none;
+  text-decoration: line-through;
+}
+
+/* ======================================= */
+/* === CSS BARU UNTUK TAMPILAN SETELAH LOGIN === */
+/* ======================================= */
+.user-main-header .super-top-bar {
+  padding: 8px 0;
+}
+.user-main-header .top-bar {
+  padding: 12px 0;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+  background-color: #212529;
+}
+.user-main-header .user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.user-main-header .user-icon {
+  font-size: 1.5rem;
+  color: #ffc107;
+}
+.user-main-header .user-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+.user-main-header .username {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+.user-main-header .balance {
+  color: #ffc107;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.user-main-header .btn-refresh {
+  color: #ffc107;
+  font-size: 1.2rem;
+}
+.user-main-header .bottom-bar {
+  background-color: #000;
+  padding: 10px 0;
+}
+.header-icon-link {
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  font-size: 0.8rem;
+  flex-grow: 1;
+  opacity: 0.8;
+}
+.header-icon-link:hover {
+  opacity: 1;
+  color: #ffc107;
+}
+.header-icon-link i {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.category-scroll-wrapper {
+  overflow-x: auto;
+  background-color: #1a1a1a;
+  padding: 5px;
+}
+.category-scroll-wrapper::-webkit-scrollbar {
+  height: 3px;
+}
+.category-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+.category-item {
+  flex-shrink: 0;
+  padding: 8px 20px;
+  border-radius: 20px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid #333;
+}
+.category-item:hover {
+  background-color: #444;
+}
+.category-item.active {
+  background-color: #ffc107;
+  color: #121212;
+  font-weight: bold;
+  border-color: #ffc107;
+}
+
+.section-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffc107;
+}
+.search-box {
+  position: relative;
+  max-width: 250px;
+}
+.search-box .form-control {
+  background-color: #2a2a2a;
+  border-color: #444;
+  color: #fff;
+  padding-right: 35px;
+}
+.search-box i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+}
+
+.provider-card img {
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+.provider-card:hover img {
+  transform: scale(1.05);
+}
+
+/* ======================================= */
+/* === CSS BARU UNTUK HEADER PENGGUNA (V2) === */
+/* ======================================= */
+.user-header-v2 {
+  background-color: #1a1a1a;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+.user-header-v2 .btn-dark-custom {
+  background-color: #333;
+  border-color: #444;
+  color: #fff;
+}
+.user-header-v2 .user-info-v2 {
+  text-align: center;
+}
+.user-header-v2 .user-info-v2 .username {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+.user-header-v2 .user-info-v2 .balance {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffc107;
+}
+.user-header-v2 .user-info-v2 .balance i {
+  margin-right: 5px;
+}
+.user-header-v2 .btn-refresh-v2 {
+  color: #ffc107;
+  padding: 0 5px;
+  font-size: 0.9rem;
+}
+
+/* --- Sidebar Pengguna (Off-canvas) --- */
+.user-sidebar {
+  background-color: #1a1a1a !important;
+  border-right: 1px solid #333;
+}
+.user-sidebar .offcanvas-header {
+  border-bottom-color: #333 !important;
+}
+.user-sidebar .user-sidebar-nav .nav-link {
+  color: #e0e0e0;
+  padding: 12px 15px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  transition: background-color 0.2s ease;
+}
+.user-sidebar .user-sidebar-nav .nav-link:hover {
+  background-color: #2f2f2f;
+}
+.user-sidebar .user-sidebar-nav .nav-link.active {
+  background-color: #ffc107;
+  color: #121212;
+  font-weight: bold;
+}
+
+/* ======================================= */
+/* === CSS BARU UNTUK HEADER & SIDEBAR PENGGUNA (V3) === */
+/* ======================================= */
+.user-main-header .super-top-bar {
+  padding: 8px 0;
+}
+.user-main-header .btn-dark-custom {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+}
+.user-main-header .bottom-bar {
+  background-color: #000;
+  padding: 5px 0;
+}
+.user-main-header .top-bar {
+  display: none;
+} /* Sembunyikan baris info lama */
+.header-icon-link {
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  font-size: 0.8rem;
+  flex-grow: 1;
+  opacity: 0.8;
+  padding: 5px 0;
+}
+.header-icon-link:hover {
+  opacity: 1;
+  color: #ffc107;
+}
+.header-icon-link i {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* --- Sidebar Pengguna (Off-canvas) --- */
+.user-sidebar {
+  background-color: #1a1a1a !important;
+  border: none;
+  color: #fff;
+}
+.user-sidebar .offcanvas-header {
+  border-bottom: 1px solid #333 !important;
+}
+.sidebar-user-info {
+  background-color: #2a2a2a;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.sidebar-user-info .username {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.sidebar-user-info .balance {
+  font-size: 1rem;
+  color: #ffc107;
+}
+.sidebar-user-info .btn-refresh-v2 {
+  color: #ffc107;
+  padding: 0 5px;
+  background: none;
+  border: none;
+}
+.sidebar-user-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  gap: 10px;
+}
+.sidebar-user-actions a {
+  flex-grow: 1;
+  text-align: center;
+  text-decoration: none;
+  color: #121212;
+  background-color: #ffc107;
+  padding: 8px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+.sidebar-divider {
+  border-top: 1px solid #444;
+}
+.user-sidebar-nav .nav-link {
+  color: #e0e0e0;
+  padding: 12px 15px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+.user-sidebar-nav .nav-link:hover {
+  background-color: #2f2f2f;
+}
+.user-sidebar-nav .nav-link.active {
+  background-color: #ffc107;
+  color: #121212;
+  font-weight: bold;
+}
+
+/* Bagian Toast Notification */
+#login-toast {
+  position: fixed; /* Tetap di layar saat di-scroll */
+  left: 50%;
+  transform: translateX(-50%); /* Posisi tengah horizontal */
+  bottom: 55px; /* Sesuaikan nilai ini dengan perkiraan tinggi mobile footer Anda */
+  z-index: 1050; /* Pastikan di atas elemen lain */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 5px;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.8); /* Background gelap transparan */
+  color: white;
+}
+
+#login-toast.show {
+  opacity: 1;
+}
+
+/* Tambahkan sedikit styling untuk isi toast jika perlu */
+#login-toast #toast-message {
+  font-size: 0.9rem;
+}
+
+/* Styling untuk mobile footer (jika belum ada atau perlu disesuaikan) */
+.mobile-footer-nav {
+  background-color: #212529; /* Warna background gelap */
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  text-align: center;
+  z-index: 1000; /* Pastikan di bawah toast */
+}
+
+.mobile-footer-nav .nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #adb5bd; /* Warna teks tidak aktif */
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+.mobile-footer-nav .nav-item i {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.mobile-footer-nav .nav-item.active,
+.mobile-footer-nav .nav-item:hover {
+  color: #ffc107; /* Warna teks aktif/hover */
+}
+
+/* File: assets/css/style.css (REVISI FINAL KOMPREHENSIF - Penambahan Deposit.php Styling) */
+
+/* File: assets/css/style.css (REVISI FINAL KOMPREHENSIF - Styling Deposit.php) */
+
+/* ... (SEMUA KODE CSS SEBELUMNYA TETAP SAMA) ... */
+
+/* ======================================================= */
+/* == 5. FORM, PROMO, LIVE CHAT, & UTILITY COMPONENTS == */
+/* ======================================================= */
+
+/* --- Deposit Page Specific Styles --- */
+.deposit-channels {
+  border: 1px solid #ffc107; /* Border kuning */
+  border-radius: 8px; /* Sudut membulat */
+  overflow: hidden; /* Pastikan tombol di dalamnya tidak keluar */
+}
+
+.deposit-channels .btn {
+  background-color: #333; /* Warna default tombol */
+  color: #fff;
+  border: none; /* Hapus border bawaan btn */
+  padding: 10px 15px;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+  border-radius: 0; /* Hapus border-radius bawaan btn */
+  /* Untuk QRIS (Auto) icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.deposit-channels .btn.active {
+  background-color: #ffc107; /* Warna aktif kuning */
+  color: #121212; /* Teks hitam saat aktif */
+}
+
+.deposit-channels .btn:hover {
+  background-color: #444; /* Efek hover */
+}
+.deposit-channels .btn.active:hover {
+  background-color: #e0ac00; /* Efek hover untuk aktif */
+}
+
+.deposit-channels .btn-qris {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+.deposit-channels .btn-bank-transfer {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* Accordion di halaman deposit */
+.accordion-item.bg-dark {
+  /* Tambahkan ini jika belum ada */
+  border-color: #333 !important; /* Border tipis untuk item accordion */
+}
+.accordion-item.bg-dark .accordion-header .accordion-button {
+  background-color: #1a1a1a; /* Warna background header accordion */
+  color: #ffc107; /* Warna teks header accordion */
+  font-weight: bold;
+  border-bottom: 1px solid #333; /* Garis bawah header */
+}
+.accordion-item.bg-dark .accordion-header .accordion-button:not(.collapsed) {
+  background-color: #2a2a2a; /* Warna saat dibuka */
+  color: #ffc107;
+  box-shadow: none;
+}
+.accordion-item.bg-dark .accordion-body {
+  background-color: #2a2a2a; /* Warna background body accordion */
+  border-top: 1px solid #333;
+}
+.accordion-button::after {
+  /* Icon panah default */
+  filter: invert(1) grayscale(1) brightness(1.5); /* Ubah warna panah menjadi putih */
+}
+.accordion-button:not(.collapsed)::after {
+  filter: invert(0) grayscale(1) brightness(0.5); /* Ubah warna panah saat terbuka */
+}
+
+/* Styling untuk Status Bank */
+.bank-status-item {
+  background-color: #2a2a2a;
+  border-radius: 5px;
+  padding: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px; /* Tinggi minimum agar logo muat */
+}
+.bank-status-item img {
+  max-width: 60px; /* Ukuran logo */
+  height: auto;
+  margin-bottom: 5px;
+}
+.bank-status-item span {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.bank-status-item .status-text {
+  /* Kelas baru untuk teks status */
+  font-size: 0.7rem;
+  font-weight: normal;
+  margin-top: -3px;
+}
+.bank-status-item.bank-online .status-text {
+  color: #28a745; /* Hijau */
+}
+.bank-status-item.bank-offline .status-text {
+  color: #dc3545; /* Merah */
+}
+
+/* Tambahan styling untuk form-text info min/max amount */
+.form-text {
+  font-size: 0.8rem;
+  color: #ccc;
+  margin-top: 0.25rem;
+}
+
+/* --- Global form control styling (jika belum ada) --- */
+.form-control,
+.form-select,
+.input-group-text {
+  background-color: #2a2a2a !important;
+  border-color: #444 !important;
+  color: #fff !important;
+}
+.form-control::placeholder {
+  color: #bbb !important;
+  opacity: 0.8 !important;
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: #ffc107 !important;
+  box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25) !important;
+}
+
+/* --- Styling untuk Tombol Salin --- */
+.copy-button {
+  background-color: #ffc107;
+  color: #121212;
+  border: none;
+  font-weight: bold;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.copy-button:hover {
+  background-color: #e0ac00;
+  color: #121212;
+}
+
+/* --- Responsive styling untuk form labels pada mobile --- */
+@media (max-width: 575.98px) {
+  .form-label {
+    font-size: 0.9rem; /* Sedikit lebih kecil di mobile */
+  }
+  .form-control,
+  .form-select,
+  .input-group-text {
+    font-size: 0.9rem;
+  }
+  .deposit-channels .btn {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+  .deposit-channels .btn i {
+    font-size: 1.1rem;
+  }
+}
+
+/* --- Styling untuk Gambar QRIS --- */
+.qris-image {
+  display: block; /* Agar bisa pakai margin auto */
+  margin: 15px auto; /* Tengah secara horizontal */
+  border: 5px solid #fff; /* Border putih */
+  box-shadow: 0 0 15px rgba(255, 193, 7, 0.5); /* Efek cahaya kuning */
+}
+
+/* ======================================================== */
+/* == STYLE LIVE CHAT (REVISI FINAL - 100% BENAR) == */
+/* ======================================================== */
+
+/* Jendela Obrolan Utama */
+.chat-window {
+  display: flex;
+  flex-direction: column;
+  gap: 1px; /* Mengurangi jarak antar baris wrapper */
+  padding: 15px;
+  background-color: #1a1a1a;
+}
+
+/* Wrapper untuk setiap grup pesan. Ini akan menjadi satu baris penuh. */
+.chat-bubble-wrapper {
+  display: flex; /* Mengatur konten di dalamnya (label, bubble, meta) */
+  flex-direction: column;
+  margin-bottom: 15px; /* Memberi jarak bawah antar pesan */
+}
+
+/* Gelembung pesan itu sendiri */
+.chat-bubble {
+  padding: 12px 18px;
+  border-radius: 20px;
+  color: #e0e0e0;
+  white-space: pre-wrap;
+  max-width: 80%; /* Lebar maksimum bubble adalah 80% dari jendela chat */
+  width: fit-content; /* KUNCI: Lebar bubble hanya akan sebesar isinya */
+}
+
+/* Label Pengirim (Anda/Admin) */
+.chat-sender-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #a0a0a0;
+  margin-bottom: 4px;
+  padding: 0 2px;
+}
+
+/* Meta Waktu */
+.chat-meta {
+  font-size: 0.7rem;
+  color: #888;
+  margin-top: 5px;
+  padding: 0 5px;
+}
+
+/* --- LOGIKA POSISI BARU --- */
+
+/* Untuk pesan yang DITERIMA (dari Admin), dorong kontennya ke KIRI */
+.chat-bubble-wrapper.received {
+  align-items: flex-start;
+}
+.chat-bubble-wrapper.received .chat-bubble {
+  background-color: #3a3a3a;
+  border-bottom-left-radius: 5px;
+}
+
+/* Untuk pesan yang DIKIRIM (dari Anda), dorong kontennya ke KANAN */
+.chat-bubble-wrapper.sent {
+  align-items: flex-end;
+}
+.chat-bubble-wrapper.sent .chat-bubble {
+  background-color: #0d6efd;
+  color: #fff;
+  border-bottom-right-radius: 5px;
+}
+
+/* CSS BARU UNTUK FOTO PROFIL ADMIN CHAT */
+.chat-admin-pfp {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Membuat gambar menjadi bulat */
+  object-fit: cover; /* Memastikan gambar terisi penuh tanpa distorsi */
+  border: 2px solid #ffc107; /* Border kuning sesuai tema */
+}
+
+/* ===== GAYA BARU UNTUK FOOTER TAGLINE MODERN ===== */
+.footer-tagline {
+  color: #ffc107; /* Warna kuning khas tema Anda */
+  font-size: 1.1rem; /* Sedikit lebih besar dari teks biasa */
+  font-weight: 600; /* Lebih tebal dari normal */
+  letter-spacing: 0.5px; /* Jarak antar huruf agar lebih mudah dibaca */
+  text-transform: uppercase; /* Membuatnya menjadi huruf kapital semua */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Efek bayangan agar teks menonjol */
+}
+
+/* ===== GAYA BARU UNTUK BLOK INFO USER & SALDO ===== */
+.user-wallet-block {
+  display: flex;
+  align-items: center;
+  background-color: #2c2c2c; /* Warna background blok yang sedikit lebih terang */
+  border: 1px solid #444;
+  border-radius: 50px; /* Membuat sudut sangat membulat (pill shape) */
+  padding: 5px;
+  gap: 10px;
+}
+
+.user-icon-wrapper {
+  background-color: #444;
+  color: #ffc107;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.user-details-wrapper {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.user-details-wrapper .username {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.user-details-wrapper .balance {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffc107; /* Warna saldo kuning */
+}
+
+.btn-refresh-wallet {
+  color: #aaa;
+  font-size: 1rem;
+  padding: 0 8px;
+}
+
+.btn-refresh-wallet:hover {
+  color: #fff;
+}
+/* ===== GAYA BARU UNTUK HALAMAN PROFIL ===== */
+.profile-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Jarak antar item info */
+}
+
+.profile-info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.5rem;
+}
+
+.profile-info-label {
+  color: #a0a0a0; /* Warna abu-abu untuk label */
+  font-size: 0.9rem;
+}
+
+.profile-info-value {
+  color: #ffffff; /* Warna putih untuk nilai */
+  font-weight: 600;
+  font-size: 1rem;
+}
+.profile-card .form-label {
+  font-weight: 500;
+  color: #ccc;
+}
+
+.profile-info-text {
+  font-size: 0.8rem;
+  color: #888;
+  line-height: 1.4;
+}
+
+.profile-info-text p {
+  margin-bottom: 0.25rem;
+}
+
+.super-top-bar {
+  padding: 8px 0; /* Memberi sedikit ruang atas dan bawah */
+}
+
+.header-logo-link img {
+  height: 55px; /* Membuat logo sedikit lebih besar dan jelas */
+  max-width: 150px;
+  object-fit: contain;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Memberi jarak antara ikon bell dan menu */
+}
+
+.btn-header-icon {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem; /* Ukuran ikon yang pas */
+  padding: 5px;
+}
+
+.btn-header-icon:hover {
+  color: #ffc107; /* Efek hover warna kuning */
+}
+
+/* ===== GAYA BARU UNTUK HALAMAN MEMO ===== */
+.memo-nav {
+  display: flex;
+  gap: 5px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 10px;
+}
+.btn-memo-nav {
+  background-color: #3a3a3a;
+  color: #fff;
+  border: 1px solid #555;
+}
+.btn-memo-nav.active {
+  background-color: #ffc107;
+  color: #121212;
+  border-color: #ffc107;
+  font-weight: bold;
+}
+.memo-toolbar {
+  padding: 10px;
+  background-color: #2c2c2c;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.btn-memo-action {
+  background: none;
+  color: #ccc;
+  border: 1px solid #555;
+  margin-left: 10px;
+}
+.memo-list-group .list-group-item {
+  background-color: #2a2a2a;
+  color: #fff;
+  border-color: #3a3a3a;
+  cursor: pointer;
+}
+.memo-list-group .list-group-item.unread {
+  font-weight: bold;
+}
+.memo-list-group .list-group-item:hover {
+  background-color: #3a3a3a;
+}
+
+/* ===== GAYA BARU UNTUK HALAMAN REFERRAL ===== */
+.referral-nav .nav-link {
+  color: #fff;
+  background-color: #3a3a3a;
+  margin: 0 5px;
+  border: none;
+}
+.referral-nav .nav-link.active {
+  color: #121212;
+  background-color: #ffc107;
+  font-weight: bold;
+}
+
+/* ===== GAYA BARU UNTUK HALAMAN BANTUAN ===== */
+.help-nav .nav-link {
+  color: #fff;
+  background-color: #3a3a3a;
+  margin: 0 5px;
+  border: none;
+  font-weight: 500;
+}
+.help-nav .nav-link.active {
+  color: #121212;
+  background-color: #ffc107;
+  font-weight: bold;
+}
+
+/* Kustomisasi Accordion untuk Tema Gelap */
+.accordion-item {
+  background-color: #2c2c2c !important;
+  color: #fff;
+  border-color: #444 !important;
+}
+.accordion-button {
+  background-color: #3a3a3a !important;
+  color: #fff !important;
+  font-weight: 600;
+}
+.accordion-button:not(.collapsed) {
+  background-color: #4e4e4e !important;
+  box-shadow: none !important;
+}
+.accordion-button::after {
+  filter: invert(1) grayscale(100) brightness(200%); /* Membuat panah menjadi putih */
+}
+.accordion-body {
+  background-color: #212121;
+  color: #e0e0e0;
+}
+.accordion-body ol {
+  padding-left: 1.2rem;
+}
+
+/* ===== GAYA BARU UNTUK FLOATING SOCIAL MENU ===== */
+.floating-social-menu {
+  position: fixed;
+  bottom: 80px;
+  left: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.floating-social-menu .menu-toggle-button {
+  position: relative; /* Diperlukan untuk pseudo-elements */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #ffc107;
+  background-color: #2c3e50; /* Warna dasar jika animasi tidak didukung */
+  color: #fff;
+  cursor: pointer;
+  overflow: hidden; /* Penting untuk efek gradien */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.floating-social-menu .menu-toggle-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%; /* Lebih besar agar bisa berputar */
+  height: 200%;
+  background: conic-gradient(#ffc107, #ff7b00, #c300ff, #00d4ff, #ffc107);
+  transform-origin: center center;
+  animation: rotateGradient 4s linear infinite;
+  z-index: 1;
+}
+
+.floating-social-menu .menu-toggle-button i {
+  position: relative;
+  z-index: 2; /* Ikon berada di atas gradien */
+  font-size: 1.6rem;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.floating-social-menu.active .menu-toggle-button i {
+  transform: rotate(135deg); /* Ikon berputar menjadi 'X' */
+}
+
+/* Animasi untuk gradien berputar */
+@keyframes rotateGradient {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* -- Gaya untuk ikon-ikon sosial (biarkan seperti sebelumnya) -- */
+.floating-social-menu .social-icons-container {
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.floating-social-menu .social-icon {
+  width: 50px;
+  height: 50px;
+  background: #333;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  text-decoration: none;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  transition-delay: calc(0.1s * var(--i));
+}
+.floating-social-menu.active .social-icon {
+  opacity: 1;
+  transform: translateY(0);
+}
+.floating-social-menu .social-icon:hover {
+  background-color: #ffc107;
+  color: #121212;
+}

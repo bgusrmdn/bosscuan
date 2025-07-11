@@ -1,0 +1,44 @@
+# ======================================================
+
+# FILE .HTACCESS UTAMA UNTUK KEAMANAN HOKIRAJA
+
+# ======================================================
+
+# --- Matikan Penjelajahan Folder ---
+
+# Ini mencegah pengunjung melihat daftar file di dalam folder jika tidak ada file index.
+
+Options -Indexes
+
+# --- Lindungi File-File Sensitif ---
+
+# Blokir akses langsung dari browser ke file-file penting.
+
+<FilesMatch "\.(htaccess|htpasswd|ini|phps|fla|psd|log|sh|sql)$">
+Order Allow,Deny
+Deny from all
+</FilesMatch>
+
+# --- Lindungi File Koneksi Database Secara Spesifik ---
+
+<Files "db_connect.php">
+Order Allow,Deny
+Deny from all
+</Files>
+
+# --- Header Keamanan untuk Mencegah Serangan Umum ---
+
+<IfModule mod_headers.c>
+    # Mencegah Clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    # Mencegah XSS (Cross-Site Scripting)
+    Header set X-XSS-Protection "1; mode=block"
+    # Mencegah MIME-sniffing
+    Header set X-Content-Type-Options "nosniff"
+</IfModule>
+
+# Mengatur Error Page kustom (Opsional tapi direkomendasikan)
+
+# ErrorDocument 404 /halaman_404.php
+
+# ErrorDocument 403 /halaman_403.php

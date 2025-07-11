@@ -1,0 +1,25 @@
+# ======================================================
+
+# FILE .HTACCESS KHUSUS UNTUK FOLDER ADMIN
+
+# ======================================================
+
+# --- Matikan Penjelajahan Folder ---
+
+Options -Indexes
+
+# --- (OPSIONAL - KEAMANAN TINGKAT TINGGI) Batasi Akses Berdasarkan IP ---
+
+# Jika Anda ingin HANYA IP Anda yang bisa mengakses halaman admin, gunakan ini.
+
+# Hapus tanda # di bawah dan ganti xx.xx.xx.xx dengan alamat IP publik Anda.
+
+#
+
+# Order deny,allow
+
+# Deny from all
+
+# Allow from xx.xx.xx.xx
+
+# Allow from yy.yy.yy.yy <--- Tambahkan baris ini jika ada IP lain
