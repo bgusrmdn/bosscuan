@@ -46,8 +46,8 @@ if (isset($_SESSION['error_message'])) {
                             <tbody>
                                 <?php
                                 $games_result = $conn->query("SELECT * FROM games ORDER BY id DESC");
-                                if ($games_result && $games_result->num_rows > 0):
-                                    while ($row = $games_result->fetch_assoc()): ?>
+        if ($games_result && $games_result->num_rows > 0):
+            while ($row = $games_result->fetch_assoc()): ?>
                                         <tr>
                                             <td><?php echo $row['id']; ?></td>
                                             <td><img src="../assets/images/games/<?php echo htmlspecialchars($row['gambar_thumbnail']); ?>" width="80" onerror="this.src='https://placehold.co/80x80/EEE/31343C?text=No+Image';"></td>
@@ -61,7 +61,7 @@ if (isset($_SESSION['error_message'])) {
                                             </td>
                                         </tr>
                                     <?php endwhile;
-                                else: ?>
+        else: ?>
                                     <tr>
                                         <td colspan="7" class="text-center">Belum ada data game.</td>
                                     </tr>
@@ -94,8 +94,8 @@ if (isset($_SESSION['error_message'])) {
                             <tbody>
                                 <?php
                                 $providers_result = $conn->query("SELECT * FROM providers ORDER BY sort_order ASC, id ASC");
-                                if ($providers_result && $providers_result->num_rows > 0):
-                                    while ($row = $providers_result->fetch_assoc()): ?>
+        if ($providers_result && $providers_result->num_rows > 0):
+            while ($row = $providers_result->fetch_assoc()): ?>
                                         <tr>
                                             <td><?php echo $row['sort_order']; ?></td>
                                             <td><img src="../assets/images/providers/<?php echo htmlspecialchars($row['logo_provider']); ?>" width="100" onerror="this.src='https://placehold.co/100x40/EEE/31343C?text=No+Logo';"></td>
@@ -106,7 +106,7 @@ if (isset($_SESSION['error_message'])) {
                                             </td>
                                         </tr>
                                 <?php endwhile;
-                                endif; ?>
+        endif; ?>
                             </tbody>
                         </table>
                     </div>
@@ -135,9 +135,9 @@ if (isset($_SESSION['error_message'])) {
                             </thead>
                             <tbody>
                                 <?php
-                                $categories_result = $conn->query("SELECT * FROM categories ORDER BY sort_order ASC, id ASC");
-                                if ($categories_result && $categories_result->num_rows > 0):
-                                    while ($row = $categories_result->fetch_assoc()): ?>
+        $categories_result = $conn->query("SELECT * FROM categories ORDER BY sort_order ASC, id ASC");
+        if ($categories_result && $categories_result->num_rows > 0):
+            while ($row = $categories_result->fetch_assoc()): ?>
                                         <tr>
                                             <td><?php echo $row['sort_order']; ?></td>
                                             <td><img src="../assets/images/categories/<?php echo htmlspecialchars($row['image']); ?>" width="80" onerror="this.src='https://placehold.co/80x80/EEE/31343C?text=No+Image';"></td>
@@ -149,7 +149,7 @@ if (isset($_SESSION['error_message'])) {
                                             </td>
                                         </tr>
                                 <?php endwhile;
-                                endif; ?>
+        endif; ?>
                             </tbody>
                         </table>
                     </div>

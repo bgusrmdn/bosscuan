@@ -1,4 +1,5 @@
 <?php
+
 // File: includes/db_connect.php
 
 // Konfigurasi Database

@@ -5,8 +5,8 @@
     <?php
     // Dapatkan nama file saat ini untuk menyorot menu yang aktif
     $current_page = basename($_SERVER['PHP_SELF']);
-    // Tentukan navigasi footer berdasarkan status login
-    if (isset($_SESSION['user_id'])) {
+// Tentukan navigasi footer berdasarkan status login
+if (isset($_SESSION['user_id'])) {
     ?>
         <a href="beranda.php" class="nav-item <?php echo ($current_page == 'beranda.php') ? 'active' : ''; ?>">
             <i class="fas fa-home"></i><span>Home</span>
@@ -24,7 +24,7 @@
             <i class="fas fa-user"></i><span>Profil</span>
         </a>
     <?php
-    } else {
+} else {
     ?>
         <a href="index.php" class="nav-item <?php echo ($current_page == 'index.php') ? 'active' : ''; ?>">
             <i class="fas fa-home"></i><span>Home</span>
@@ -42,8 +42,8 @@
             <i class="fas fa-sign-in-alt"></i><span>Login</span>
         </a>
     <?php
-    }
-    ?>
+}
+?>
 </nav>
 <footer class="main-footer text-center p-4 mt-5">
     <div class="container">

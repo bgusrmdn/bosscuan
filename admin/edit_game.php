@@ -102,7 +102,9 @@ $providers = $conn->query("SELECT nama_provider FROM providers ORDER BY nama_pro
                 <label for="provider" class="form-label">Provider</label>
                 <select class="form-select" id="provider" name="provider" required>
                     <?php while ($p = $providers->fetch_assoc()): ?>
-                        <option value="<?php echo $p['nama_provider']; ?>" <?php if ($game['provider'] == $p['nama_provider']) echo 'selected'; ?>>
+                        <option value="<?php echo $p['nama_provider']; ?>" <?php if ($game['provider'] == $p['nama_provider']) {
+                            echo 'selected';
+                        } ?>>
                             <?php echo htmlspecialchars($p['nama_provider']); ?>
                         </option>
                     <?php endwhile; ?>
@@ -112,12 +114,24 @@ $providers = $conn->query("SELECT nama_provider FROM providers ORDER BY nama_pro
             <div class="mb-3">
                 <label for="kategori" class="form-label">Kategori</label>
                 <select class="form-select" id="kategori" name="kategori" required>
-                    <option value="Slot" <?php if ($game['kategori'] == 'Slot') echo 'selected'; ?>>Slot</option>
-                    <option value="Live Casino" <?php if ($game['kategori'] == 'Live Casino') echo 'selected'; ?>>Live Casino</option>
-                    <option value="Sports" <?php if ($game['kategori'] == 'Sports') echo 'selected'; ?>>Sports</option>
-                    <option value="Togel" <?php if ($game['kategori'] == 'Togel') echo 'selected'; ?>>Togel</option>
-                    <option value="Fishing" <?php if ($game['kategori'] == 'Fishing') echo 'selected'; ?>>Fishing</option>
-                    <option value="Arcade" <?php if ($game['kategori'] == 'Arcade') echo 'selected'; ?>>Arcade</option>
+                    <option value="Slot" <?php if ($game['kategori'] == 'Slot') {
+                        echo 'selected';
+                    } ?>>Slot</option>
+                    <option value="Live Casino" <?php if ($game['kategori'] == 'Live Casino') {
+                        echo 'selected';
+                    } ?>>Live Casino</option>
+                    <option value="Sports" <?php if ($game['kategori'] == 'Sports') {
+                        echo 'selected';
+                    } ?>>Sports</option>
+                    <option value="Togel" <?php if ($game['kategori'] == 'Togel') {
+                        echo 'selected';
+                    } ?>>Togel</option>
+                    <option value="Fishing" <?php if ($game['kategori'] == 'Fishing') {
+                        echo 'selected';
+                    } ?>>Fishing</option>
+                    <option value="Arcade" <?php if ($game['kategori'] == 'Arcade') {
+                        echo 'selected';
+                    } ?>>Arcade</option>
                 </select>
             </div>
 
@@ -133,12 +147,16 @@ $providers = $conn->query("SELECT nama_provider FROM providers ORDER BY nama_pro
             </div>
 
             <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="is_featured" name="is_featured" value="1" <?php if ($game['is_featured'] == 1) echo 'checked'; ?>>
+                <input type="checkbox" class="form-check-input" id="is_featured" name="is_featured" value="1" <?php if ($game['is_featured'] == 1) {
+                    echo 'checked';
+                } ?>>
                 <label class="form-check-label" for="is_featured">Tampilkan sebagai Game Unggulan (Featured)?</label>
             </div>
 
             <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="is_active" name="is_active" value="1" <?php if ($game['is_active'] == 1) echo 'checked'; ?>>
+                <input type="checkbox" class="form-check-input" id="is_active" name="is_active" value="1" <?php if ($game['is_active'] == 1) {
+                    echo 'checked';
+                } ?>>
                 <label class="form-check-label" for="is_active">Aktifkan Game (Tampilkan di situs)?</label>
             </div>
 

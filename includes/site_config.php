@@ -1,4 +1,5 @@
 <?php
+
 // File: includes/site_config.php
 
 if (!isset($conn) || !$conn) {
