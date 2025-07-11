@@ -129,9 +129,6 @@ $qris_image_data->close();
 $old_logos = $_POST['old_logos'] ?? [];
 // TAMBAHKAN 'admin_profile_picture' KE DALAM ARRAY INI
 foreach (['main_logo', 'admin_logo', 'footer_logo', 'admin_profile_picture'] as $logo_type) {
-    if (isset($_FILES[$logo_type]) && $_FILES[$logo_type]['error'] == 0) {
-        // ... (sisa logika upload file di sini tetap sama) ...
-    }
 }
 ?>
 
