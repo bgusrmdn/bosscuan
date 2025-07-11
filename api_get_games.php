@@ -1,4 +1,5 @@
 <?php
+
 // File: hokiraja/api_get_games.php (REVISI PROFESIONAL: Memastikan Filter Kategori Bekerja)
 header('Content-Type: application/json');
 require_once 'includes/db_connect.php';

@@ -50,11 +50,11 @@ if ($payment_methods_result) {
                 echo '<div class="alert alert-danger">' . htmlspecialchars($_SESSION['rekening_error']) . '</div>';
                 unset($_SESSION['rekening_error']);
             }
-            if (isset($_SESSION['rekening_success'])) {
-                echo '<div class="alert alert-success">' . htmlspecialchars($_SESSION['rekening_success']) . '</div>';
-                unset($_SESSION['rekening_success']);
-            }
-            ?>
+if (isset($_SESSION['rekening_success'])) {
+    echo '<div class="alert alert-success">' . htmlspecialchars($_SESSION['rekening_success']) . '</div>';
+    unset($_SESSION['rekening_success']);
+}
+?>
 
             <div class="card bg-dark text-white border-secondary mb-4">
                 <div class="card-header">

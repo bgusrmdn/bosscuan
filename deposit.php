@@ -74,7 +74,7 @@ if ($bonuses_result) {
     }
 } else {
     // Fallback jika query gagal
-    $bonuses_options[] = ['id' => 0, 'bonus_name' => '- Silahkan pilih -', 'bonus_code' => 'NONE', 'min_deposit' => 0.00, 'max_bonus_amount' => NULL, 'percentage' => NULL, 'turnover_multiplier' => 1.00, 'is_active' => 1];
+    $bonuses_options[] = ['id' => 0, 'bonus_name' => '- Silahkan pilih -', 'bonus_code' => 'NONE', 'min_deposit' => 0.00, 'max_bonus_amount' => null, 'percentage' => null, 'turnover_multiplier' => 1.00, 'is_active' => 1];
 }
 
 
@@ -292,7 +292,7 @@ if (isset($conn)) {
                                                     <?php foreach ($bank_status_list as $bank):
                                                         $status_class = ($bank['status'] == 'online') ? 'bank-online' : 'bank-offline';
                                                         $status_text = ($bank['status'] == 'online') ? 'Online' : 'Offline';
-                                                    ?>
+                                                        ?>
                                                         <div class="col">
                                                             <div class="bank-status-item <?php echo $status_class; ?>">
                                                                 <img src="assets/images/bank_logos/<?php echo htmlspecialchars($bank['logo'] ?? 'default_bank_logo.png'); ?>" alt="<?php echo htmlspecialchars($bank['method_name']); ?>" class="img-fluid">
